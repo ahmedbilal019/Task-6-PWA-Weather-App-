@@ -1,14 +1,14 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import "../App.css";
 import axios from "axios";
 import searchIcon from "../searchIcon.svg";
+
 const WeatherInfo = React.lazy(() => import("./WeatherInfo"));
 
 export default function Card() {
   const apiKey = "e8c7123d2f6eb8bf4b3bbb5dfe8347a7";
   const [data, setData] = useState({});
   const [cityName, setInputCity] = useState("");
-  const [loading, setloading] = useState(true);
   const getweatherDetails = (cityName) => {
     if (!cityName || cityName === "") return;
     axios
@@ -19,7 +19,7 @@ export default function Card() {
           apiKey
       )
       .then((res) => {
-        // console.log("response", res.data);
+        console.log("response", res.data);
         setData(res.data);
       })
       .catch((err) => {
@@ -55,13 +55,7 @@ export default function Card() {
             value={cityName}
             title="Search bar"
           />
-          <button
-            className="searchbtn"
-            onClick={() => {
-              setloading(!loading);
-              handleSearch();
-            }}
-          >
+          <button className="searchbtn" onClick={handleSearch}>
             <img
               src={searchIcon}
               alt="Search Icon"
@@ -83,7 +77,7 @@ export default function Card() {
             <Suspense
               fallback={
                 <div>
-                  <p>Loading Data....</p>
+                  <p>Loading...</p>
                 </div>
               }
             >
