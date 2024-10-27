@@ -37,10 +37,10 @@ export default function Card() {
     getweatherDetails();
   }, []);
 
-  const temperature = (data?.main?.temp - 273.15).toFixed(2);
-  const weatherIconUrl = data.weather
-    ? `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-    : null;
+  // const temperature = (data?.main?.temp - 273.15).toFixed(2);
+  // const weatherIconUrl = data.weather
+  //   ? `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+  //   : null;
   return (
     <div className="card">
       <header>
